@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: secretland
+  labels:
+    app: secretland
+spec:
+  selector:
+    matchLabels:
+      app: secretland
+  template:
+    metadata:
+      labels:
+        app: secretland
+    spec:
+      containers:
+      - image: susnata/secretland:v2
+        name: rails
+        ports:
+        - containerPort: 3000
+        env:
+          - name: RAILS_MASTER_KEY
+            valueFrom:
+              secretKeyRef:
+                name: secretland-secrets
+                key: rails-master-key
+                name: mysecret
+                key: RDS_HOSTNAME
+                name: mysecret
+                key: RDS_DB_NAME
+                name: mysecret
+                key: RDS_PORT
+                name: mysecret
+                key: RDS_USERNAME
+                name: mysecret
+                key: RDS_PASSWORD
