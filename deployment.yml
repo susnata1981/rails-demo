@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: secretland
+  name: secretland-deployment
   labels:
     app: secretland
 spec:
@@ -14,7 +14,7 @@ spec:
         app: secretland
     spec:
       containers:
-      - image: susnata/secretland:v2
+      - image: 745892092221.dkr.ecr.us-east-1.amazonaws.com/railsapp:20
         name: rails
         ports:
         - containerPort: 3000

@@ -5,6 +5,7 @@ metadata:
 spec:
   selector:
     app: secretland
+  type: LoadBalancer
   ports:
   - protocol: TCP
     port: 80
