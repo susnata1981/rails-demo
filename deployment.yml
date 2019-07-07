@@ -34,3 +34,5 @@ spec:
                 key: RDS_USERNAME
                 name: mysecret
                 key: RDS_PASSWORD
+                name: mysecret
+                key: secret_key_base
