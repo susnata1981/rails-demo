@@ -14,25 +14,62 @@ spec:
         app: secretland
     spec:
       containers:
-      - image: 745892092221.dkr.ecr.us-east-1.amazonaws.com/railsapp:20
+      - image: 745892092221.dkr.ecr.us-east-1.amazonaws.com/railsapp:23
         name: rails
         ports:
         - containerPort: 3000
         env:
-          - name: RAILS_MASTER_KEY
+          - name: RDS_HOSTNAME
             valueFrom:
               secretKeyRef:
-                name: secretland-secrets
-                key: rails-master-key
                 name: mysecret
                 key: RDS_HOSTNAME
+          - name: RDS_DB_NAME
+            valueFrom:
+              secretKeyRef:
                 name: mysecret
                 key: RDS_DB_NAME
+          - name: RDS_HOSTNAME
+            valueFrom:
+              secretKeyRef:
+                name: mysecret
+                key: RDS_HOSTNAME
+          - name: RDS_PORT
+            valueFrom:
+              secretKeyRef:
                 name: mysecret
                 key: RDS_PORT
+          - name: RDS_USERNAME
+            valueFrom:
+              secretKeyRef:
                 name: mysecret
                 key: RDS_USERNAME
+          - name: RDS_PASSWORD
+            valueFrom:
+              secretKeyRef:
                 name: mysecret
                 key: RDS_PASSWORD
+          - name: SECRET_KEY_BASE
+            valueFrom:
+              secretKeyRef:
                 name: mysecret
-                key: secret_key_base
+                key: SECRET_KEY_BASE
+          # - name: RDS_PASSWORD
+          #     value: "5432"
+          # - name: RAILS_MASTER_KEY
+          #   valueFrom:
+          #     secretKeyRef:
+          #       name: secretland-secrets
+          #       key: rails-master-key
+          #       name: mysecret
+          #       key: RDS_HOSTNAME
+          #       name: mysecret
+          #       key: RDS_DB_NAME
+          #       name: mysecret
+          #       key: RDS_PORT
+          #       name: mysecret
+          #       key: RDS_USERNAME
+          #       name: mysecret
+          #       key: RDS_PASSWORD
+          #       name: mysecret
+          #       key: SECRET_KEY_BASE 
